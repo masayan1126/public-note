@@ -1,0 +1,30 @@
+runtime: python3
+
+runtime_config:
+    # pythonインタープリタとubuntuの対応バージョン参考： https://cloud.google.com/appengine/docs/flexible/python/runtime?hl=ja#interpreter
+    operating_system: "ubuntu18"
+    runtime_version: "3.9"
+
+env: flex
+entrypoint: gunicorn -b :$PORT ...
+service: your service name
+
+resources:
+  cpu: 2
+  memory_gb: 2.3
+  disk_size_gb: 10
+  volumes:
+  - name: ramdisk1
+    volume_type: tmpfs
+    size_gb: 0.5
+
+automatic_scaling:
+  min_num_instances: 1
+  max_num_instances: 15
+  cool_down_period_sec: 180
+  cpu_utilization:
+    target_utilization: 0.6
+  target_concurrent_requests: 100
+
+env_variables:
+  URL: https://sample.com
