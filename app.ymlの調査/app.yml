@@ -7,6 +7,8 @@ runtime_config:
 
 env: flex
 # 記述方法要確認
+## django-admin startproject ... で決めたプロジェクト名
+# entrypoint: daphne -b 0.0.0.0 -p 8080 project.asgi:application
 entrypoint: gunicorn -b :$PORT ...
 service: your service name
 
