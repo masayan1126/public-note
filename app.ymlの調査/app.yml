@@ -1,4 +1,4 @@
-runtime: python3
+runtime: python
 
 runtime_config:
     # pythonインタープリタとubuntuの対応バージョン参考： https://cloud.google.com/appengine/docs/flexible/python/runtime?hl=ja#interpreter
